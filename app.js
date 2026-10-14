@@ -283,6 +283,17 @@ const copy={
           "Sales reports, expenses, staff roles and database backups"
         ],
         "Clothing shop point-of-sale interface preview"
+      ],
+      [
+        "Nagi Book Store",
+        "WEBSITE / ONLINE BOOKSTORE",
+        "An online bookstore for readers across Iraq, with an English book catalogue, genre browsing and prices in Iraqi dinars.",
+        [
+          "Browse and search the book collection",
+          "Discover genres, featured titles and best sellers",
+          "Build a book bag and explore delivery options"
+        ],
+        "Library artwork from the Nagi Book Store website"
       ]
     ],
     "deliveryTitle": "What you receive",
@@ -594,6 +605,17 @@ const copy={
           "تقارير المبيعات والمصروفات وصلاحيات الموظفين والنسخ الاحتياطي"
         ],
         "معاينة واجهة نظام نقاط البيع لمتجر الملابس"
+      ],
+      [
+        "مكتبة ناجي",
+        "موقع إلكتروني / متجر كتب",
+        "متجر كتب إلكتروني للقرّاء في أنحاء العراق، يضم كتباً باللغة الإنجليزية وتصفّحاً حسب النوع وأسعاراً بالدينار العراقي.",
+        [
+          "تصفّح مجموعة الكتب والبحث فيها",
+          "اكتشاف الأنواع والكتب المميزة والأكثر مبيعاً",
+          "إضافة الكتب إلى السلة والاطّلاع على خيارات التوصيل"
+        ],
+        "صورة المكتبة من موقع مكتبة ناجي"
       ]
     ],
     "deliveryTitle": "ما الذي تحصل عليه",
@@ -635,7 +657,7 @@ document.querySelector('#app').innerHTML=`
 <main>
 <section class="hero-section" aria-label="ADLA"><div class="hero"><div class="hero-gallery" aria-label="${t.slideLabel}" aria-roledescription="carousel">${t.slideAlts.map((alt,i)=>`<img class="hero-slide ${i===0?'is-active':''}" src="assets/hero-slide-${i+1}.webp" alt="${alt}" aria-hidden="${i!==0}" fetchpriority="${i===0?'high':'low'}">`).join('')}</div><div class="wrap hero-content"><div class="hero-copy"><p class="eyebrow">${t.place}</p><h1>${t.hero[0]}<br><em>${t.hero[1]}</em></h1><p>${t.intro}</p><div class="actions"><a href="#contact" class="button">${t.start}</a><a href="#services" class="button secondary">${t.view}</a></div></div></div><div class="slide-controls"><button class="slide-toggle" type="button" aria-label="${t.pauseSlides}">Ⅱ</button><div class="slide-dots" role="group" aria-label="${t.slideLabel}">${t.slideAlts.map((_,i)=>`<button type="button" data-slide="${i}" aria-label="${t.picture} ${i+1}" aria-pressed="${i===0}"></button>`).join('')}</div></div></div></section>
 <div class="intro-strip wrap"><div class="intro-inner">${t.features.map(([title,body])=>`<article class="feature"><span class="feature-mark" aria-hidden="true">✓</span><h3>${title}</h3><p>${body}</p></article>`).join('')}</div></div>
-<section class="section featured-section" id="work"><div class="wrap"><div class="featured-heading"><h2>${t.workTitle}</h2><a href="#contact">${t.projectMore} <span aria-hidden="true">↗</span></a></div><div class="project-grid">${t.projects.map((p,i)=>`<article class="project-tile project-${i}">${i===3?posPreview():`<img src="assets/${['project-fume.jpg','project-ml.png','project-simulator.png'][i]}" alt="${p[4]}" loading="lazy" width="1500" height="1200">`}<div class="project-shade"></div><div class="project-copy"><h3>${p[0]}</h3><p>${p[1]}</p></div><a class="project-open" href="${['fume-society','machine-learning-studio','reservoir-simulator','clothing-pos'][i]}.html?lang=${lang}" aria-label="${t.details}: ${p[0]}"><span aria-hidden="true">↗</span></a></article>`).join('')}</div></div></section>
+<section class="section featured-section" id="work"><div class="wrap"><div class="featured-heading"><h2>${t.workTitle}</h2><a href="#contact">${t.projectMore} <span aria-hidden="true">↗</span></a></div><div class="project-grid">${t.projects.map((p,i)=>`<article class="project-tile project-${i}">${i===3?posPreview():`<img src="assets/${['project-fume.jpg','project-ml.png','project-simulator.png',null,'project-nagi.webp'][i]}" alt="${p[4]}" loading="lazy" width="1500" height="1200">`}<div class="project-shade"></div><div class="project-copy"><h3>${p[0]}</h3><p>${p[1]}</p></div><a class="project-open" href="${['fume-society','machine-learning-studio','reservoir-simulator','clothing-pos','nagi-book-store'][i]}.html?lang=${lang}" aria-label="${t.details}: ${p[0]}"><span aria-hidden="true">↗</span></a></article>`).join('')}</div></div></section>
 <section class="section purpose-section" id="purpose"><div class="wrap"><div class="section-head"><div><p class="eyebrow">${t.purposeLabel}</p><h2>${t.purposeTitle}</h2></div></div><div class="purpose-grid">${[['mission',t.missionTitle,t.missionText],['vision',t.visionTitle,t.visionText]].map(([file,title,body],i)=>`<article class="purpose-card"><img src="assets/${file}.webp" alt="${t.purposeAlts[i]}" width="736" height="1308" loading="lazy"><div class="purpose-copy"><h3>${title}</h3><p>${body}</p></div></article>`).join('')}</div></div></section>
 <section class="section capabilities-section" id="services"><div class="wrap capabilities-layout"><div><div class="section-head"><div><p class="eyebrow">${t.sectionNames[0]}</p><h2>${t.servicesTitle}</h2></div></div><div class="capabilities-grid">${t.services.map((v,i)=>`<article class="capability"><span class="cap-icon" aria-hidden="true">${['&lt;/&gt;','POS','APP','{ }','AI','∑'][i]}</span><div><h3>${v[0]}</h3><p>${v[1]}</p><div class="tags">${v[2].map(tag=>`<span class="tag">${tag}</span>`).join('')}</div></div></article>`).join('')}</div></div><aside class="tools-panel"><p class="eyebrow">${t.toolsTitle}</p><div class="tools-grid">${['JavaScript','React','Node.js','Python','SQL','Statistics'].map((tool,i)=>`<div><span aria-hidden="true">${['JS','Re','N','Py','DB','∑'][i]}</span>${tool}</div>`).join('')}</div><p class="tools-note">${t.toolsNote}</p><div class="tools-callout"><img src="assets/logo.png" alt="" width="45" height="45"><p>${t.servicesIntro}</p><a href="#contact" class="text-button">${t.start}</a></div></aside></div></section>
 <section class="section" id="about"><div class="wrap about-grid"><div class="about-copy"><p class="eyebrow">${t.sectionNames[2]}</p><h2>${t.aboutTitle}</h2>${t.aboutP.map(p=>`<p>${p}</p>`).join('')}<div class="about-loc"><strong>${t.aboutLoc}</strong><span>${t.aboutLang}</span></div></div><aside class="developer-card"><div class="developer-mark"><img src="assets/logo.png" alt="ADLA" width="120" height="120"></div><p class="developer-name">ADLA</p><p class="developer-role">${t.role}</p><dl><div><dt>${t.locationLabel}</dt><dd>${t.aboutLoc}</dd></div><div><dt>${t.focusLabel}</dt><dd>${t.focus}</dd></div></dl><a href="mailto:adla.agency@outlook.com" dir="ltr">adla.agency@outlook.com</a></aside></div></section>
